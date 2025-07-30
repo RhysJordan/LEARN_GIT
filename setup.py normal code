@@ -1,0 +1,38 @@
+from setuptools import find_packages, setup
+
+package_name = 'my_py_pkg'
+
+setup(
+    name=package_name,
+    version='0.0.0',
+    packages=find_packages(exclude=['test']),
+    data_files=[
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+    ],
+    install_requires=['setuptools'],
+    zip_safe=True,
+    maintainer='rhys',
+    maintainer_email='rhys@todo.todo',
+    description='TODO: Package description',
+    license='TODO: License declaration',
+    tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+            "py_node = my_py_pkg.my_first_node:main" #Executable: "name_of_executable = relative_path_to_file.file_name:name_of_function_to_call"
+        ],
+    },
+)
+
+#in terminal: Then
+
+#~/ros2_ws$ colcon build --packages-select my_py_pkg
+
+#NB! We have just created something new, so we must now
+
+#~$ source ~/.bashrc
+
+#Now we can run by
+
+#~$ ros2 run my_py_pkg py_node (Use auto complete to confirm)
